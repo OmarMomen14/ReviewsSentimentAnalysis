@@ -1,0 +1,7 @@
+flask
+gunicorn
+xgboost
+nltk
+youtokentome
+keras
+tensorflow

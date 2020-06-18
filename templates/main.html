@@ -1,0 +1,52 @@
+<!doctype html>
+<html>
+	<style>
+		form {
+			margin: auto;
+			width: 35%;
+			font-size: 10px;
+		}
+		.result {
+			margin: auto;
+			width: 35%;
+			border: 1px solid #ccc;
+		}
+        .review {
+            color: red;
+        }
+	</style>
+	
+	<head>
+		<title>Analyze the review sentiment</title>
+	</head>
+	
+	<body>
+       
+        <div class="form">
+            <form action="{{ url_for('main') }}" method="POST">
+                <fieldset>
+                    <legend>Input Review:</legend>
+                    <br>
+                    Please add your new review for this product!
+                    <br>
+                    <br>
+                    <textarea name="review" rows="5" cols="20" maxlength="30" required></textarea>
+                    <br>
+                    <br>
+                    <input type="submit">
+                </fieldset>
+            </form>
+        </div>
+        
+        <br>
+        
+        <div class="result" align="center">
+            {% if result %}
+                <h3>Your review <span class="review">"{{ inputText }}"</span> has been recorded as a:</h3>
+                   <p style="font-size:50px">{{ result }}</p>
+            {% endif %}
+        </div>
+        
+	</body>
+    
+</html>
