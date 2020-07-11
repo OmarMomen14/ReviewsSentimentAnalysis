@@ -104,10 +104,31 @@ def main():
 		result = " "
 		if prediction == 0:
 			result = "Negative Review"
+			f = open("negative.txt","a")
+			review = review + "\n"
+			f.write(review) 
+			f.close() 
 		elif prediction == 1:
 			result = "Positive Review"
-
+			f = open("positive.txt","a")
+			review = review + "\n"
+			f.write(review) 
+			f.close()
 		return flask.render_template('main.html',inputText=review, result=result)
+
+
+
+@app.route('/positive')
+def positive():
+	if flask.request.method == 'GET':
+		positiveFile = open("positive.txt", "r")
+		return(flask.render_template('positive.html', lines = positiveFile))
+
+@app.route('/negative')
+def negative():
+	if flask.request.method == 'GET':
+		negativeFile = open("negative.txt", "r")
+		return(flask.render_template('negative.html', lines= negativeFile))
 
 if __name__ == '__main__':
     app.debug = True

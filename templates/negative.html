@@ -26,6 +26,12 @@
 			font-size: 10px;
 		}
         
+        
+        .headline {
+            font-size: 50px;
+        }
+        
+        
         .form form legend {
             font-size: 50px;
         }
@@ -78,7 +84,7 @@
 	</style>
 	
 	<head>
-		<title>Analyze the review sentiment</title>
+		<title>Negative Reviews</title>
 	</head>
 	
 	<body>
@@ -96,30 +102,14 @@
         
        <div class="right-side">
         
-            <div class="form">
-                <form action="{{ url_for('main') }}" method="POST">
-                    <fieldset>
-                        <legend>Input Review</legend>
-                        <br>
-                        <span class="addReview">Please add your new review for the product!</span>
-                        <br>
-                        <br>
-                        <textarea class="review-field" name="review" rows="3" cols="30" required></textarea>
-                        <br>
-                        <br>
-                        <input class="submit-btn" type="submit" value="Add Review!">
-                    </fieldset>
-                </form>
+           <span class="headline">Negative Reviews</span>
+           <br> 
+           {% for line in lines %}
+           <div style="width: 100%; background-color: white;">	
+                <p> {{ line }} </p>
             </div>
-
-            <br>
-
-            <div class="result" align="center">
-                {% if result %}
-                    <span style="font-size:50px">Your review <br><span class="review">"{{ inputText }}"</span> <br>has been recorded as a:</span>
-                       <p style="font-size:50px; color:red;">{{ result }}</p>
-                {% endif %}
-            </div>
+           
+			{% endfor %} 
         </div>
 	</body>
     
